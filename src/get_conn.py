@@ -27,8 +27,8 @@ def get_connection_uri():
     password = credential.get_token("https://ossrdbms-aad.database.windows.net").token
     password_encoded = urllib.parse.quote_plus(password)
 
-    dbuser = "---"
-    password_encoded = "---"
+    dbuser = "<sql-admin>"
+    password_encoded = "<sql-admin-password>"
 
     db_uri = f"postgresql://{dbuser}:{password_encoded}@{dbhost}:{dbport}/{dbname}?sslmode={sslmode}"
     print("Connection uri was rertieved successfully.")
