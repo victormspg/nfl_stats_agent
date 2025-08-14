@@ -1,34 +1,32 @@
-# # PostgreSQL Database
-POSTGRES_USER="your postgres user"
-POSTGRES_HOST="full postgres server address"
-POSTGRES_PORT=5432
-POSTGRES_DB = "your postgres database name"
+# PostgreSQL Database
+POSTGRES_USER="<pgadmin_user>"
+POSTGRES_PASSWORD="<pgadmin_password>"
+POSTGRES_HOST="<pgadmin_host>"
+POSTGRES_PORT=<pgadmin_port>
+POSTGRES_FOOTBALL_DB = "football_db"
+POSTGRES_CHAT_HISTORY_DB = "chat_history_db"
 SSLMODE ='require'
-POSTGRES_SERVER_NAME = "only the server name without .postgres.database.azure.com"
+POSTGRES_SERVER_NAME = "<pgadmin_server_name>"
 
-# # Azure OpenAI
-AZURE_OPENAI_API_KEY="your azure openai api key"
-AZURE_OPENAI_ENDPOINT="your azure openai endpoint"
-AZURE_OPENAI_API_VERSION="2025-01-01-preview"
-# Cosmos DB
-COSMOS_CONNECTION_STRING = "your cosmos db connection string"
-COSMOS_DATABASE_NAME = "Contoso" # or your db name
-# SQL DB
-SQL_SERVER='YOUR_SERVER_NAME.database.windows.net'
-SQL_DB_NAME="database name"
-SQL_UID='your sql user id'
-# embeddinng model
-AZURE_OPENAI_EMBED_ID="text-embedding-ada-002"
-AZURE_OPENAI_EMBED_MODEL="text-embedding-ada-002"
-AZURE_OPENAI_EMBED_DIMENSIONS=1536
-AZURE_OPENAI_EMBEDDING_COLUMN="embedding_ada002"
-AZURE_OPENAI_EMBED_ENDPOINT= "" #refer to readme 
-AZURE_OPENAI_BASE_EMBED_URL = ""
+# Azure OpenAI
+AZURE_OPENAI_API_KEY="<azure_openai_key>"
+AZURE_OPENAI_ENDPOINT="<azure_openai_endpoint>"
+AZURE_OPENAI_API_VERSION="<azure_openai_api_version>"
+AZURE_OPENAI_CHAT_DEPLOYMENT_NAME="<azure_openai_chat_deployment_name>"
+
+# embedding model
+AZURE_OPENAI_EMBED_ID="<azure_openai_embed_id>"
+AZURE_OPENAI_EMBED_MODEL="<azure_openai_embed_model>"
+AZURE_OPENAI_EMBED_DIMENSIONS=<azure_openai_embed_dimensions>
+AZURE_OPENAI_EMBEDDING_COLUMN="<azure_openai_embedding_column>"
+AZURE_OPENAI_EMBED_ENDPOINT= "<azure_openai_embed_endpoint>"
+AZURE_OPENAI_BASE_EMBED_URL = "<azure_openai_base_embed_url>"
+
 # Azure Subscription and Resource Group
-AZURE_SUBSCRIPTION_ID = "your subscription id"
-AZURE_RESOURCE_GROUP = "your resource group name"
-AAD_IN_USE = "True"
-# Azure AI search
-AZURE_SEARCH_KEY= "your azure search key"
-AZURE_SEARCH_ENDPOINT="your azure search endpoint"
-AZURE_SEARCH_INDEX= "name of your index" # e.g. prod-cat-index
+AZURE_SUBSCRIPTION_ID = "<azure_subscription_id>"
+AZURE_RESOURCE_GROUP = "<azure_resource_group>"
+AAD_IN_USE = "<aad_in_use>"
+
+# Cosmos DB
+COSMOS_CONNECTION_STRING = "<cosmos_connection_string>"
+COSMOS_DATABASE_NAME = "<cosmos_database_name>"
