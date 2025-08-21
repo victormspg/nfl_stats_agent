@@ -4,7 +4,6 @@ from semantic_kernel.functions import kernel_function
 from typing import Dict, List, Optional, Tuple
 import os
 from pgvector.psycopg2 import register_vector
-from semantic_kernel.connectors.ai.open_ai import AzureTextEmbedding
 import sys
 import os
 sys.path.append(os.path.abspath('..'))

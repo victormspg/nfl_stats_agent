@@ -4,7 +4,6 @@ from semantic_kernel.functions import kernel_function
 from typing import List, Optional, Tuple, Dict
 import os
 from pgvector.psycopg2 import register_vector
-from semantic_kernel.connectors.ai.open_ai import AzureTextEmbedding
 import sys
 import os
 
