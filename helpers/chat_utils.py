@@ -1,10 +1,6 @@
-import random
-from typing_extensions import runtime
-import psycopg2
 import json
 from semantic_kernel.agents import ChatHistoryAgentThread
-from semantic_kernel.contents import ChatMessageContent, AuthorRole
-from semantic_kernel.agents.runtime import InProcessRuntime
+from semantic_kernel.contents import ChatMessageContent
 
 class ChatHistoryInPostgresDB(ChatHistoryAgentThread):
     """This class stores the chat history in a PostgreSQL database"""
