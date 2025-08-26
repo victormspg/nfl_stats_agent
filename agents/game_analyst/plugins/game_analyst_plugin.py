@@ -43,7 +43,6 @@ class GameAnalystPlugin:
 
             cursor.close()
             conn.close()
-            print("Database connection closed.")
 
             return {
                 "date": game["gamedate"],
