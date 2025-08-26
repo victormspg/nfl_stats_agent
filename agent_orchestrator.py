@@ -166,8 +166,8 @@ async def agent_response_callback_with_history(hist, message: ChatMessageContent
 # Chat Lifecycle
 # -------------------------------
 def start_chat():
-    print("\nWelcome to NFL Analytics Chat!")
-    print("You can ask questions about games, players, formations, and strategy based on data from season 2018.")
+    print("\n🏈 Welcome to NFL Analytics Assistant!")
+    print("Ask about games, players, formations, or strategy from the 2018 NFL season.")
     print("Type 'exit' to end the chat.\n")
     customer_id = input("Please enter your customer ID: ")
     session_id = input("Please enter your session ID (or press Enter if this is a new chat/topic): ")
