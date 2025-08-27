@@ -3,4 +3,4 @@ azure-identity
 psycopg2
 semantic-kernel
 pgvector
-azure-cosmos
+pandas
