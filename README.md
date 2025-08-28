@@ -40,7 +40,7 @@ This project showcases a multi-agent AI system designed to analyze NFL games, pl
 ### High Level Architecture
 
 <p align="center">
-  <img src="https://github.com/victormspg/nfl_stats_agent/blob/main/images/high_level_architecture_diagram.png" alt="High Level Architecture" width="700"/>
+  <img src="https://github.com/victormspg/nfl_stats_agent/blob/main/images/high_level_architecture_diagram.png" alt="High Level Architecture" width="400"/>
 </p>
 
 ### Multi-Agent Architecture
