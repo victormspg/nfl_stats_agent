@@ -39,11 +39,15 @@ This project showcases a multi-agent AI system designed to analyze NFL games, pl
 
 ### High Level Architecture
 
-![High Level Architecture](https://github.com/victormspg/nfl_stats_agent/blob/main/images/high_level_architecture_diagram.png)
+<p align="center">
+  <img src="https://github.com/victormspg/nfl_stats_agent/blob/main/images/high_level_architecture_diagram.png" alt="High Level Architecture" width="700"/>
+</p>
 
 ### Multi-Agent Architecture
 
-![Multi-Agent Architecture](https://github.com/victormspg/nfl_stats_agent/blob/main/images/multi_agent_architecture_diagram.png)
+<p align="center">
+<img src="https://github.com/victormspg/nfl_stats_agent/blob/main/images/multi_agent_architecture_diagram.png" alt="Multi-Agent Architecture" width="700"/>
+</p>
 
 ---
 
@@ -74,6 +78,32 @@ This project showcases a multi-agent AI system designed to analyze NFL games, pl
 
 ---
 
+## 🔄 System Flow Overview 
+
+1. **User Initiation**:  
+  The user starts a chat session, providing a customer and session ID.
+
+2. **Intent Classification**:  
+  The system analyzes the user's input to classify the intent as related to games, players, formations, or general queries.
+
+3. **Agent Orchestration**:  
+  - The system uses specialized agents:
+    - **Master Agent**: General queries and delegation.
+    - **Game Analyst Agent**: Game data and insights.
+    - **Player Analyst Agent**: Player data and statistics.
+    - **Formation Strategist Agent**: Play formations and tactical analysis.
+  - Based on the classified intent, the appropriate agent is selected to handle the query.
+
+4. **Agent Handoffs**:  
+  Agents can hand off tasks to each other if a query falls outside their specialization, ensuring the right agent responds.
+
+5. **Chat History Management**:  
+  All interactions are stored in a PostgreSQL database, allowing users to resume previous sessions.
+
+6. **Response Delivery**:  
+  The selected agent processes the query and returns a response to the user, with the conversation history updated accordingly.
+
+---
 
 ## ⚙️ Tech Stack
 
@@ -93,27 +123,52 @@ This project showcases a multi-agent AI system designed to analyze NFL games, pl
 
 ```bash
 nfl_stats_agent/
+├── agent_orchestrator.py
+├── requirements.txt
+├── README.md
 ├── agents/
-│   ├── master_agent
-│       ├── plugins
-│           ├── master_agent_plugin.py
-│   ├── game_analyst.py
-│   ├── player_analyst.py
-│   └── formation_strategist.py
+│   ├── master_agent/
+│   │   ├── system_message.py
+│   │   └── plugins/
+│   │       └── master_agent_plugin.py
+│   ├── game_analyst/
+│   │   ├── system_message.py
+│   │   └── plugins/
+│   │       └── game_analyst_plugin.py
+│   ├── player_analyst/
+│   │   ├── system_message.py
+│   │   └── plugins/
+│   │       └── player_analyst_plugin.py
+│   └── formation_strategist/
+│       ├── system_message.py
+│       └── plugins/
+│           └── formation_strategist_plugin.py
 ├── data/
 │   ├── games.csv
 │   ├── players.csv
 │   ├── plays.csv
-│   └── week_data.csv
+│   ├── week_data.zip
+│   └── data_dictionary.md
 ├── docs/
+│   ├── azure_resources_creation.md
+│   ├── env_file_configuration.md
+│   └── postgresql_db_creation.md
 ├── helpers/
+│   ├── chat_utils.py
+│   ├── db_utils.py
+│   └── embeddings_utils.py
+├── images/
+│   ├── high_level_architecture_diagram.png
+│   └── multi_agent_architecture_diagram.png
 ├── slides/
-│   └── semantic_kernel.yaml
+│   └── nfl_stats_agent_capstone_project.pptx
 ├── workflows/
-└── README.md
-└── agent_orchestrator.py
+│   ├── chat_history_db_setup.ipynb
+│   ├── embeddings_creation.ipynb
+│   └── football_db_setup.ipynb
 ```
 
+---
 
 ## 🧰 Prerequisites
 
@@ -179,7 +234,7 @@ For detailed instructions on how to create and configure these resources, refer 
     ```
 
 4. **Configure resource credentials:**
-    - Add your Azure endpoints and keys and DB details to .env file. For detailed instructions refer to: [Configure .env file](https://github.com/victormspg/nfl_stats_agent/blob/main/docs/env_file_configuration.md).
+    - Add your Azure endpoints and keys and DB details to .env file. For detailed instructions refer to: [.env File Configuration Guide](https://github.com/victormspg/nfl_stats_agent/blob/main/docs/env_file_configuration.md).
 
 5. **Run setup notebooks:**
     - [workflows/football_db_setup.ipynb](https://github.com/victormspg/nfl_stats_agent/blob/main/workflows/football_db_setup.ipynb)
