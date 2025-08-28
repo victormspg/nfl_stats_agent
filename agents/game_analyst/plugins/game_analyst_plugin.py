@@ -12,10 +12,17 @@ from helpers.embeddings_utils import embedding_service
 
 class GameAnalystPlugin:
     def __init__(self, db_uri: str):
+        """
+        Initialize the GameAnalystPlugin with the database URI.
+        """
         self.db_uri = db_uri
         print("Game Analyst Plugin initialized.")
 
     def get_game_details(self, gameId: Optional[str] = None):
+        """
+        Fetch details for a specific game by gameId.
+        Returns a dictionary with game summary information.
+        """
         query = """SELECT 
                     *
                 FROM games
@@ -44,6 +51,7 @@ class GameAnalystPlugin:
             cursor.close()
             conn.close()
 
+            # Return a summary dictionary for the game
             return {
                 "date": game["gamedate"],
                 "teams": f"{game['visitorteamabbr']} @ {game['hometeamabbr']}",
@@ -56,7 +64,10 @@ class GameAnalystPlugin:
             return None
     
     def get_highlight_key_events(self, gameId: Optional[str] = None):
-
+        """
+        Fetch key highlight events (touchdowns, interceptions, sacks) for a given gameId.
+        Returns a list of play dictionaries.
+        """
         query = """SELECT 
                     *
                 FROM plays
@@ -79,6 +90,7 @@ class GameAnalystPlugin:
 
             plays = [dict(zip(columns, row)) for row in rows]
 
+            # Filter for key events: touchdowns, interceptions, sacks
             key_events = [
                 p for p in plays
                 if ("touchdown" in p.get("playdescription", "").lower()) or
@@ -94,6 +106,9 @@ class GameAnalystPlugin:
 
     @kernel_function 
     def get_game_summary(self, gameId: Optional[str] = None) -> dict:
+        """
+        Returns a summary and key events for a given gameId.
+        """
         summary = self.get_game_details(gameId)
         key_events = self.get_highlight_key_events(gameId)
         if not summary:
@@ -112,6 +127,7 @@ class GameAnalystPlugin:
     def get_teams_results(self, teams: List[str]) -> List[Dict]:
         """
         Returns the game results for specific teams.
+        Each result includes week, date, time, teams, and scores.
         """
         teams_str = ','.join(f"'{item}'" for item in teams)
 
@@ -157,10 +173,12 @@ class GameAnalystPlugin:
     
     @kernel_function
     async def get_related_games_diskann(self, embedding_text: str, limit: int = 100) -> List[Tuple[int, List[float]]]:
-        """Returns the most similar games to the question using diskann index."""
-        
+        """
+        Returns the most similar games to the question using diskann index.
+        Uses embedding_service to generate embeddings for the input text.
+        """
+        # Generate embedding for the input text
         embedding_vector = (await embedding_service.generate_embeddings([embedding_text]))[0]
-
         embedding = str(embedding_vector.tolist())
 
         conn = psycopg2.connect(self.db_uri)

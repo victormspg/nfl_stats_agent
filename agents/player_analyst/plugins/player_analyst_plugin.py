@@ -5,7 +5,6 @@ from typing import List, Optional, Tuple, Dict
 import os
 from pgvector.psycopg2 import register_vector
 import sys
-import os
 
 sys.path.append(os.path.abspath('..'))
 
@@ -13,11 +12,17 @@ from helpers.embeddings_utils import embedding_service
 
 class PlayerAnalystPlugin:
     def __init__(self, db_uri: str):
+        """
+        Initialize the PlayerAnalystPlugin with a database URI.
+        """
         self.db_uri = db_uri
         print("Player Analyst Plugin initialized.")
 
     @kernel_function
     def get_player_profile(self, nflId: Optional[str] = None) -> dict:
+        """
+        Retrieve a player's profile information from the database using their NFL ID.
+        """
         query = """SELECT 
                         *
                     FROM players
@@ -40,6 +45,7 @@ class PlayerAnalystPlugin:
 
             player = dict(zip(columns, row))
 
+            # Return selected profile fields
             return {
                 "name": player["displayname"],
                 "position": player["position"],
@@ -54,6 +60,9 @@ class PlayerAnalystPlugin:
 
     @kernel_function
     def get_player_stats_per_game(self, nflId: Optional[str] = None, gameId: Optional[str] = None, playId: Optional[str] = None) -> dict:
+        """
+        Retrieve and aggregate a player's movement stats for a specific game and play.
+        """
         if not nflId or not gameId or not playId:
             print("nflId, gameId, and playId are required.")
             return {}
@@ -78,20 +87,20 @@ class PlayerAnalystPlugin:
 
             data = [dict(zip(columns, row)) for row in rows]
 
-            # Aggregate stats
+            # Aggregate stats across all frames for the play
             total_distance = sum(d["dis"] for d in data)
             avg_speed = sum(d["s"] for d in data) / len(data)
             max_speed = max(d["s"] for d in data)
             avg_acceleration = sum(d["a"] for d in data) / len(data)
             max_acceleration = max(d["a"] for d in data)
 
-            # Unique identifiers
+            # Collect unique events, routes, and play IDs
             events = list(set(d["event"] for d in data if d["event"]))
             routes = list(set(d["route"] for d in data if d["route"]))
             play_ids = set(d["playid"] for d in data)
             frame_count = len(data)
 
-            # Static info (assumes consistent across frames)
+            # Use the first row as a sample for static info
             sample = data[0]
             return {
                 "playerName": sample["displayname"],
@@ -133,7 +142,9 @@ class PlayerAnalystPlugin:
                     "uniquePlays": stats.get("uniquePlays")
                 })
         return results
-    
+
+        # The following code is unreachable due to the return above.
+        # If you want to summarize player events, move this to a separate function.
 
         """
         Summarize the types and frequency of tagged events for a player in a game.
@@ -174,6 +185,7 @@ class PlayerAnalystPlugin:
             cursor.execute(query, {"nflId": nflId, "gameId": gameId})
             rows = cursor.fetchall()
             route_data = {}
+            # Group metrics by route
             for route, speed, accel, dist in rows:
                 if route not in route_data:
                     route_data[route] = {"speed": [], "accel": [], "dist": []}
@@ -182,6 +194,7 @@ class PlayerAnalystPlugin:
                 route_data[route]["dist"].append(dist)
 
             efficiency = {}
+            # Calculate averages and totals for each route
             for route, metrics in route_data.items():
                 efficiency[route] = {
                     "avgSpeed": round(sum(metrics["speed"]) / len(metrics["speed"]), 2),
@@ -196,15 +209,17 @@ class PlayerAnalystPlugin:
     
     @kernel_function
     async def get_related_players_diskann(self, embedding_text: str, limit: int = 100) -> List[Tuple[int, List[float]]]:
-        """Returns the most similar players to the question using diskann index."""
-
+        """
+        Returns the most similar players to the input text using a diskann index on player embeddings.
+        """
+        # Generate embedding for the input text
         embedding_vector = (await embedding_service.generate_embeddings([embedding_text]))[0]
-
         embedding = str(embedding_vector.tolist())
 
         conn = psycopg2.connect(self.db_uri)
         cursor = conn.cursor()
         
+        # Register vector extension for similarity search
         register_vector(conn)
         cursor.execute(
             """
@@ -217,4 +232,3 @@ class PlayerAnalystPlugin:
         
         rows = cursor.fetchall()
         return rows
-    
