@@ -96,12 +96,48 @@ nfl_stats_agent/
 └── README.md
 
 
-## Prerequisites
+## 🧰 Prerequisites
 
-1. Create azure resources
+Before running the project, ensure you have the following installed locally:
 
-2. Create football and chat_history Databases
+- **Python 3.12+**
+- **pip** (Python package manager)
+- **Git** (for cloning the repository)
 
+You will also need an active **Azure account** with access to the following services:
+
+- **Azure OpenAI Service**  
+  Required to deploy and access the `text-embedding-ada-002` and `gpt-4.1` models.
+  
+- **Azure Database for PostgreSQL Flexible Server**  
+  Used to store NFL datasets and chat history.
+
+---
+
+### 🔧 Required Azure Resources
+
+To run the project successfully, you must create the following resources in Azure:
+
+- ✅ **Resource Group**  
+  Logical container to organize all related resources.
+
+- ✅ **Azure Database for PostgreSQL Flexible Server**  
+  Used to host two databases:
+  - `football_db`: stores NFL game, player, and play data.
+  - `chat_history_db`: stores user-agent interaction history.
+
+- ✅ **Azure AI Foundry Service**  
+  Provides access to model deployment and orchestration.
+
+- ✅ **OpenAI Model Deployments**  
+  - `text-embedding-ada-002`: for semantic search and context embedding  
+  - `gpt-4.1`: for natural language understanding and agent reasoning
+
+
+📘 **Step-by-Step Setup Guide**  
+For detailed instructions on how to create and configure these resources, refer to:
+  - nfl_stats_agent/docs/azure_resources_creation.md.
+  - nfl_stats_agent/docs/postgresql_db_creation.md.
 ---
 
 ## 🚀 Getting Started
@@ -110,6 +146,7 @@ nfl_stats_agent/
    ```bash
    git clone https://github.com/victormspg/nfl_stats_agent.git
    cd nfl_stats_agent
+   ```
 
 2. Open folder and create a python env:
 
