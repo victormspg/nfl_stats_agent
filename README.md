@@ -48,14 +48,17 @@ AgentDescriptionMaster AgentOrchestrates user interactions, classifies intent, a
 
 ## 🗂️ Dataset
 
-Source: [Beginners Sports Analytics NFL Dataset (Kaggle)](https://www.kaggle.com/datasetsFL game (date, time, teams, week).
+Source: [Beginners Sports Analytics NFL Dataset (Kaggle)](https://www.kaggle.com/datasets/aryashah2k/beginners-sports-analytics-nfl-dataset)
+
+> 📌 **Data Coverage:**  
+> The datasets contain information from the **2018 NFL regular season**.  
+> The `week_data` file includes player tracking data **only for Week 11**.
+
+- **Games**: Metadata for each NFL game (date, time, teams, week).
 - **Players**: Biographical and physical data (height, weight, position, college).
 - **Plays**: Tactical and scoring details (formations, down, yardage, EPA, penalties).
 - **Week Data**: Player tracking data per frame (position, speed, orientation, events).
 
-> 📌 **Data Coverage:**
-> The datasets contain information from the **2018 NFL regular season**.  
-> The `week_data` file includes player tracking data **only for Week 11**.
 ---
 
 
