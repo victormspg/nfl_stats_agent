@@ -1,14 +1,16 @@
-## Configure .env file
+# 🛠️ `.env` File Configuration Guide
 
-Follow these steps to configure the necessary .env file for your application.
+This guide walks you through the step-by-step process of completing the `.env` file required to run the [NFL Stats Agent](https://github.com/victormspg/nfl_stats_agent). The `.env` file stores sensitive credentials and configuration values for Azure services and PostgreSQL databases.
 
 ---
 
-### 1️⃣ Clone the .env example as .env
+### 1️⃣ Clone the `.env` Example
 
-- Copy the `.env example` file and paste it on the main folder `nfl_stats_agent`.
-- Rename it as `.env`.
+Copy the .env.example file from the repo root and rename it:
 
+        ```bash
+        cp .env.example .env
+        ```
 ---
 
 ### 2️⃣ Sign in to Azure
