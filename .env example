@@ -1,8 +1,13 @@
+# Azure Subscription and Resource Group
+AZURE_SUBSCRIPTION_ID = "<azure_subscription_id>"
+AZURE_RESOURCE_GROUP = "<azure_resource_group>"
+AAD_IN_USE = "True"
+
 # PostgreSQL Database
 POSTGRES_USER="<pgadmin_user>"
 POSTGRES_PASSWORD="<pgadmin_password>"
 POSTGRES_HOST="<pgadmin_host>"
-POSTGRES_PORT=<pgadmin_port>
+POSTGRES_PORT=5432
 POSTGRES_FOOTBALL_DB = "football_db"
 POSTGRES_CHAT_HISTORY_DB = "chat_history_db"
 SSLMODE ='require'
@@ -14,19 +19,10 @@ AZURE_OPENAI_ENDPOINT="<azure_openai_endpoint>"
 AZURE_OPENAI_API_VERSION="<azure_openai_api_version>"
 AZURE_OPENAI_CHAT_DEPLOYMENT_NAME="<azure_openai_chat_deployment_name>"
 
-# embedding model
+# Embedding Model
 AZURE_OPENAI_EMBED_ID="<azure_openai_embed_id>"
 AZURE_OPENAI_EMBED_MODEL="<azure_openai_embed_model>"
 AZURE_OPENAI_EMBED_DIMENSIONS=<azure_openai_embed_dimensions>
 AZURE_OPENAI_EMBEDDING_COLUMN="<azure_openai_embedding_column>"
 AZURE_OPENAI_EMBED_ENDPOINT= "<azure_openai_embed_endpoint>"
 AZURE_OPENAI_BASE_EMBED_URL = "<azure_openai_base_embed_url>"
-
-# Azure Subscription and Resource Group
-AZURE_SUBSCRIPTION_ID = "<azure_subscription_id>"
-AZURE_RESOURCE_GROUP = "<azure_resource_group>"
-AAD_IN_USE = "<aad_in_use>"
-
-# Cosmos DB
-COSMOS_CONNECTION_STRING = "<cosmos_connection_string>"
-COSMOS_DATABASE_NAME = "<cosmos_database_name>"
