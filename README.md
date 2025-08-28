@@ -179,8 +179,7 @@ For detailed instructions on how to create and configure these resources, refer 
     ```
 
 4. **Configure resource credentials:**
-    - Add your Azure endpoints and keys and DB details to .env file. For detailed instructions refer to:
-  - [Configure .env file](https://github.com/victormspg/nfl_stats_agent/blob/main/docs/env_file_configuration.md).
+    - Add your Azure endpoints and keys and DB details to .env file. For detailed instructions refer to: [Configure .env file](https://github.com/victormspg/nfl_stats_agent/blob/main/docs/env_file_configuration.md).
 
 5. **Run setup notebooks:**
     - [workflows/football_db_setup.ipynb](https://github.com/victormspg/nfl_stats_agent/blob/main/workflows/football_db_setup.ipynb)

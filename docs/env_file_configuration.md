@@ -6,11 +6,10 @@ This guide walks you through the step-by-step process of completing the `.env` f
 
 ### 1️⃣ Clone the `.env` Example
 
-Copy the .env.example file from the repo root and rename it:
+- Copy the .env.example file from the repo root and rename it:
     ```bash
     cp .env.example .env
     ```
----
 
 ### 2️⃣ Sign in to Azure
 - Go to https://portal.azure.com
