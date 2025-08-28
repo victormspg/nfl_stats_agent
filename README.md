@@ -53,6 +53,9 @@ Source: [Beginners Sports Analytics NFL Dataset (Kaggle)](https://www.kaggle.com
 - **Plays**: Tactical and scoring details (formations, down, yardage, EPA, penalties).
 - **Week Data**: Player tracking data per frame (position, speed, orientation, events).
 
+> 📌 **Data Coverage:**
+> The datasets contain information from the **2018 NFL regular season**.  
+> The `week_data` file includes player tracking data **only for Week 11**.
 ---
 
 
@@ -121,7 +124,7 @@ nfl_stats_agent/
 
 7. Embeddings Creation
     embeddings_creation.ipynb
-    
+
 8. Run the Multi-Agent system
     python run agent_orchestrator.py
 
