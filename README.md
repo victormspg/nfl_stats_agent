@@ -35,7 +35,7 @@ This project showcases a multi-agent AI system designed to analyze NFL games, pl
 
 ---
 
-## 🏗️ Architecture
+## 🏗️ Architecture Diagrams
 
 ### High Level Architecture
 
@@ -44,6 +44,8 @@ This project showcases a multi-agent AI system designed to analyze NFL games, pl
 ### Multi-Agent Architecture
 
 ![Multi-Agent Architecture](https://github.com/victormspg/nfl_stats_agent/blob/main/images/multi_agent_architecture_diagram.png)
+
+---
 
 ## 🧠 Agents Description
 
@@ -177,7 +179,8 @@ For detailed instructions on how to create and configure these resources, refer 
     ```
 
 4. **Configure resource credentials:**
-    - Add your Azure endpoints and keys and DB details to .env file.
+    - Add your Azure endpoints and keys and DB details to .env file. For detailed instructions refer to:
+  - [Configure .env file](https://github.com/victormspg/nfl_stats_agent/blob/main/docs/env_file_configuration.md).
 
 5. **Run setup notebooks:**
     - [workflows/football_db_setup.ipynb](https://github.com/victormspg/nfl_stats_agent/blob/main/workflows/football_db_setup.ipynb)
