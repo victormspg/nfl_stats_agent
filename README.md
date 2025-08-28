@@ -10,7 +10,7 @@ This project showcases a multi-agent AI system designed to analyze NFL games, pl
 
 ---
 
-# 🎯 Objectives
+## 🎯 Objectives
 
 - Facilitate faster, data-driven tactical decisions in football.
 - Automate the analysis of formations and plays using real match data.
@@ -35,29 +35,35 @@ This project showcases a multi-agent AI system designed to analyze NFL games, pl
 
 ---
 
-## Architecture
+## 🏗️ Architecture
 
+<HIGH LEVEL ARCHITECTURE DIAGRAM>
+<MULTI-AGENT ARCHITECTURE DIAGRAM>
 
 ## 🧠 Agents Description
 
-AgentDescriptionMaster AgentOrchestrates user interactions, classifies intent, and delegates tasks to specialized agents while maintaining session continuity.| **Game Analyst Agent** | Delivers insights from game-level data, including team performance, match summaries, and key events. |
-| **Player Analyst Agent** | Analyzes individual player metrics, trends, and comparisons across games and seasons. |
-| **Formation Strategist Agent** | Evaluates tactical formations and recommends optimal setups based on game context and strategy. |
+| Agent                           | Description                                                                                                                         |
+|---------------------------------|-------------------------------------------------------------------------------------------------------------------------------------|
+| **Master Agent**                | Orchestrates user interactions, classifies intent, and delegates tasks to specialized agents while maintaining session continuity.  |
+| **Game Analyst Agent**          | Delivers insights from game-level data, including team performance, match summaries, and key events.                                |
+| **Player Analyst Agent**        | Analyzes individual player metrics, trends, and comparisons across games and seasons.                                               |
+| **Formation Strategist Agent**  | Evaluates tactical formations and recommends optimal setups based on game context and strategy.                                     |
 
 ---
 
 ## 🗂️ Dataset
 
-Source: [Beginners Sports Analytics NFL Dataset (Kaggle)](https://www.kaggle.com/datasets/aryashah2k/beginners-sports-analytics-nfl-dataset)
+**Source:** [Beginners Sports Analytics NFL Dataset (Kaggle)](https://www.kaggle.com/datasets/aryashah2k/beginners-sports-analytics-nfl-dataset)
 
 > 📌 **Data Coverage:**  
-> The datasets contain information from the **2018 NFL regular season**.  
-> The `week_data` file includes player tracking data **only for Week 11**.
+> This dataset covers the **2018 NFL regular season**, with detailed player tracking data available **exclusively for Week 11** in the `week_data` file.
 
 - **Games**: Metadata for each NFL game (date, time, teams, week).
 - **Players**: Biographical and physical data (height, weight, position, college).
 - **Plays**: Tactical and scoring details (formations, down, yardage, EPA, penalties).
 - **Week Data**: Player tracking data per frame (position, speed, orientation, events).
+
+🔍 For detailed schema definitions and field-level descriptions, refer to the [Data Dictionary](https://github.com/victormspg/nfl_stats_agent/blob/main/data/data_dictionary.md).
 
 ---
 
@@ -78,9 +84,12 @@ Source: [Beginners Sports Analytics NFL Dataset (Kaggle)](https://www.kaggle.com
 
 ## 📁 Repository Structure
 
+```bash
 nfl_stats_agent/
 ├── agents/
-│   ├── master_agent.py
+│   ├── master_agent
+│       ├── plugins
+│           ├── master_agent_plugin.py
 │   ├── game_analyst.py
 │   ├── player_analyst.py
 │   └── formation_strategist.py
@@ -89,11 +98,14 @@ nfl_stats_agent/
 │   ├── players.csv
 │   ├── plays.csv
 │   └── week_data.csv
-├── embeddings/
-├── chat_history/
-├── config/
+├── docs/
+├── helpers/
+├── slides/
 │   └── semantic_kernel.yaml
+├── workflows/
 └── README.md
+└── agent_orchestrator.py
+```
 
 
 ## 🧰 Prerequisites
@@ -136,35 +148,32 @@ To run the project successfully, you must create the following resources in Azur
 
 📘 **Step-by-Step Setup Guide**  
 For detailed instructions on how to create and configure these resources, refer to:
-  - nfl_stats_agent/docs/azure_resources_creation.md.
-  - nfl_stats_agent/docs/postgresql_db_creation.md.
+  - [Create Azure Resources](https://github.com/victormspg/nfl_stats_agent/blob/main/docs/azure_resources_creation.md).
+  - [Create PostgreSQL Databases](https://github.com/victormspg/nfl_stats_agent/blob/main/docs/postgresql_db_creation.md)
 ---
 
 ## 🚀 Getting Started
 
-1. Clone the repo:
+1. **Clone the repository**
    ```bash
    git clone https://github.com/victormspg/nfl_stats_agent.git
    cd nfl_stats_agent
    ```
 
-2. Open folder and create a python env:
+2. Create a python environment:
 
 3. Install dependencies:
     pip install -r requirements.txt
 
 4. Configure resource credentials
-    .env
+    Add your Azure endpoints and keys and DB details to .env
 
-5. Tables Creation & Population
-    notebook workflows/football_db_setup.ipynb
+5. Run setup notebooks
+  - [workflows/football_db_setup.ipynb](https://github.com/victormspg/nfl_stats_agent/blob/main/workflows/football_db_setup.ipynb)
+  - [workflows/chat_history_db_setup.ipynb](https://github.com/victormspg/nfl_stats_agent/blob/main/workflows/chat_history_db_setup.ipynb)
+  - [workflows/embeddings_creation.ipynb](https://github.com/victormspg/nfl_stats_agent/blob/main/workflows/embeddings_creation.ipynb)
 
-6. Chat History Table Creation
-    notebook workflows/chat_history_db_setup.ipynb
-
-7. Embeddings Creation
-    embeddings_creation.ipynb
-
-8. Run the Multi-Agent system
+8. Launch the Multi-Agent system
+    ```bash
     python run agent_orchestrator.py
-
+    ```

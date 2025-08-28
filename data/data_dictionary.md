@@ -10,7 +10,7 @@ This document describes the schema and column definitions for the four datasets 
 Metadata for each NFL game.
 
 | Column            | Description                                  |
-|----------------   |----------------------------------------------|
+|-------------------|----------------------------------------------|
 | `gameId`          | Unique identifier for each game (numeric)    |
 | `gameDate`        | Date of the game (mm/dd/yyyy)                |
 | `gameTimeEastern` |Start time of the game in EST (HH:MM:SS)      |
