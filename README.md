@@ -154,26 +154,32 @@ For detailed instructions on how to create and configure these resources, refer 
 
 ## 🚀 Getting Started
 
-1. **Clone the repository**
-   ```bash
-   git clone https://github.com/victormspg/nfl_stats_agent.git
-   cd nfl_stats_agent
-   ```
+1. **Clone the repository:**
+    ```bash
+    git clone https://github.com/victormspg/nfl_stats_agent.git
+    cd nfl_stats_agent
+    ```
 
-2. Create a python environment:
+2. **Create a virtual environment (optional but recommended):**
+    ```bash
+    python -m venv venv
+    source venv/bin/activate  # On Windows: venv\Scripts\activate
+    ```
 
-3. Install dependencies:
+3. **Install dependencies:**
+    ```bash
     pip install -r requirements.txt
+    ```
 
-4. Configure resource credentials
-    Add your Azure endpoints and keys and DB details to .env
+4. **Configure resource credentials:**
+    - Add your Azure endpoints and keys and DB details to .env file.
 
-5. Run setup notebooks
-  - [workflows/football_db_setup.ipynb](https://github.com/victormspg/nfl_stats_agent/blob/main/workflows/football_db_setup.ipynb)
-  - [workflows/chat_history_db_setup.ipynb](https://github.com/victormspg/nfl_stats_agent/blob/main/workflows/chat_history_db_setup.ipynb)
-  - [workflows/embeddings_creation.ipynb](https://github.com/victormspg/nfl_stats_agent/blob/main/workflows/embeddings_creation.ipynb)
+5. **Run setup notebooks:**
+    - [workflows/football_db_setup.ipynb](https://github.com/victormspg/nfl_stats_agent/blob/main/workflows/football_db_setup.ipynb)
+    - [workflows/chat_history_db_setup.ipynb](https://github.com/victormspg/nfl_stats_agent/blob/main/workflows/chat_history_db_setup.ipynb)
+    - [workflows/embeddings_creation.ipynb](https://github.com/victormspg/nfl_stats_agent/blob/main/workflows/embeddings_creation.ipynb)
 
-8. Launch the Multi-Agent system
+6. **Launch the Multi-Agent system:**
     ```bash
     python run agent_orchestrator.py
     ```
