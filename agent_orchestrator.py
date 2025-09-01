@@ -193,8 +193,8 @@ def start_chat():
     print("\n🏈 Welcome to NFL Analytics Assistant!")
     print("Ask about games, players, formations, or strategy from the 2018 NFL season.")
     print("Type 'exit' to end the chat.\n")
-    customer_id = input("Please enter your customer ID: ")
-    session_id = input("Please enter your session ID (or press Enter if this is a new chat/topic): ")
+    customer_id = input("Please enter your User ID: ")
+    session_id = input("Please enter your Session ID (or press Enter if this is a new chat/topic): ")
     return customer_id, session_id
 
 async def end_chat(hist):
@@ -246,7 +246,7 @@ async def main():
             conn=chat_history_conn,
             cur=chat_cur
         )
-    print(f"\nCustomer ID: {hist.customer_id}, Session ID: {hist.session_id}\n")
+    print(f"\nUser ID: {hist.customer_id}, Session ID: {hist.session_id}\n")
 
     # Set up orchestration with callbacks for agent/human responses
     handoff_orchestration = HandoffOrchestration(
