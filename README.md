@@ -34,6 +34,12 @@ This project showcases a multi-agent AI system designed to analyze NFL games, pl
   Highlight and explain key events
 
 ---
+## 🎥 Demo
+
+Experience the system in action:
+
+**▶️ Watch the Demo:** [Multi-Agent NFL Analytics System](https://www.youtube.com/watch?v=gfrduCyTOKg)
+
 
 ## 🏗️ Architecture Diagrams
 
